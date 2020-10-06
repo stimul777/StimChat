@@ -8,61 +8,10 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
     <div id="app"></div>
-
-    <section class="chat">
-      <label for="name">Введите имя</label>
-      <input class="name-user" type="text" name="name" placeholder="Введите имя">
-      <div class="chat__messages"></div>
-      <input class="chat__input">
-      <button class="send-message">Отправить</button>
-    </section>
+    <!-- built files will be auto injected -->
   </body>
-
-  <script src="/socket.io/socket.io.js"></script>
-  <script>
-    let socket = io.connect();
-
-    let sendMessage = document.querySelector('.send-message')
-    let chatMessages = document.querySelector('.chat__messages')
-    let chatInput = document.querySelector('.chat__input')
-    let nameUser = document.querySelector('.name-user')
-
-    sendMessage.addEventListener('click', (event) => {
-      event.preventDefault()
-      socket.emit('send Message', { message: chatInput.value, name: nameUser.value })
-      chatInput.value = ''
-    })
-
-    socket.on('add message', (data) => {
-      let divMsg = document.createElement('div')
-      chatMessages.innerHTML = `${data.name}: ${data.message}`
-      console.log(data.message)
-    })
-  
-   
-
-
-  </script>
-
-  <style>
-  .chat {
-    width: 70%;
-    height: 300px;
-    margin: 0 auto;
-    border: 1px solid black;
-  }
-  
-  .chat__messages {
-      width: 50%;
-      height: 100px;
-      margin: 0 auto;
-      border: 3px solid green;
-    }
-
-    .chat__input {
-      width: 30%;
-      height: 50px;
-    }
-  </style>
 </html>

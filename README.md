@@ -1,4 +1,4 @@
-# stim-chat
+# chat
 
 ## Project setup
 ```
