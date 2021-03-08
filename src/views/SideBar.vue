@@ -1,5 +1,6 @@
 <template>
   <v-navigation-drawer
+    class="navbar"
     v-model="drawer"
     :mini-variant.sync="mini"
     permanent
@@ -49,3 +50,7 @@ export default {
   })
 };
 </script>
+<style scoped>
+.v-navigation-drawer__content {
+}
+</style>
